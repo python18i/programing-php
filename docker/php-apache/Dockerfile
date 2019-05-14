@@ -34,6 +34,7 @@ RUN yum install --enablerepo=remi,remi-php56 -y \
     php-mysqlnd \
     php-gd \
     php-xml \
+    php-xmlrpc \
     php-pear \
     php-mcrypt && \
     yum clean all
@@ -46,6 +47,8 @@ ENV PATH ~/.composer/vendor/bin:$PATH
 
 RUN pear install MDB2
 RUN pear install MDB2_Driver_mysql
+RUN pear install MDB2-beta
+RUN pear install MDB2_Driver_mysql-beta
 
 # conf setting
 COPY ./httpd.conf /etc/httpd/conf/httpd.conf
